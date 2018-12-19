@@ -15,6 +15,9 @@
 		1B2876E421C9487D002992F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2876E221C9487D002992F7 /* Main.storyboard */; };
 		1B2876E621C9487F002992F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B2876E521C9487F002992F7 /* Assets.xcassets */; };
 		1B2876E921C9487F002992F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2876E721C9487F002992F7 /* LaunchScreen.storyboard */; };
+		1B2876F321CA8013002992F7 /* GameSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2876F221CA8013002992F7 /* GameSprite.swift */; };
+		1B2876F521CA80C0002992F7 /* Bee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2876F421CA80C0002992F7 /* Bee.swift */; };
+		1B2876F721CA88F2002992F7 /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2876F621CA88F2002992F7 /* Ground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		1B2876E521C9487F002992F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B2876E821C9487F002992F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B2876EA21C9487F002992F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B2876F221CA8013002992F7 /* GameSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSprite.swift; sourceTree = "<group>"; };
+		1B2876F421CA80C0002992F7 /* Bee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bee.swift; sourceTree = "<group>"; };
+		1B2876F621CA88F2002992F7 /* Ground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +70,12 @@
 				1B2876DA21C9487D002992F7 /* GameScene.sks */,
 				1B2876DC21C9487D002992F7 /* Actions.sks */,
 				1B2876DE21C9487D002992F7 /* GameScene.swift */,
+				1B2876F221CA8013002992F7 /* GameSprite.swift */,
+				1B2876F421CA80C0002992F7 /* Bee.swift */,
 				1B2876E021C9487D002992F7 /* GameViewController.swift */,
 				1B2876E221C9487D002992F7 /* Main.storyboard */,
 				1B2876E521C9487F002992F7 /* Assets.xcassets */,
+				1B2876F621CA88F2002992F7 /* Ground.swift */,
 				1B2876E721C9487F002992F7 /* LaunchScreen.storyboard */,
 				1B2876EA21C9487F002992F7 /* Info.plist */,
 			);
@@ -146,6 +155,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B2876F721CA88F2002992F7 /* Ground.swift in Sources */,
+				1B2876F521CA80C0002992F7 /* Bee.swift in Sources */,
+				1B2876F321CA8013002992F7 /* GameSprite.swift in Sources */,
 				1B2876DF21C9487D002992F7 /* GameScene.swift in Sources */,
 				1B2876E121C9487D002992F7 /* GameViewController.swift in Sources */,
 				1B2876D921C9487D002992F7 /* AppDelegate.swift in Sources */,
@@ -297,6 +309,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76NHZS5Z7B;
 				INFOPLIST_FILE = "Flying Penguin/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,6 +328,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76NHZS5Z7B;
 				INFOPLIST_FILE = "Flying Penguin/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
