@@ -20,7 +20,15 @@ class Player: SKSpriteNode, GameSprite {
         
         createAnimations()
         self.run(flyAnimation, withKey: "flapAnimation")
+        
+        let bodyTexture = textureAtlas.textureNamed("pierre-flying-3")
+        self.physicsBody = SKPhysicsBody(texture: bodyTexture, size: self.size)
+        self.physicsBody?.linearDamping = 0.9
+        self.physicsBody?.mass = 30
+        self.physicsBody?.allowsRotation = false
     }
+    
+    func update() {}
     
     func createAnimations() {
         let rotateUpAction =

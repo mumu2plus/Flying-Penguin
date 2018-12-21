@@ -7,12 +7,14 @@
 //
 
 import SpriteKit
+import CoreMotion
 
 class GameScene: SKScene {
     
     let cam = SKCameraNode()
     let ground = Ground()
     let player = Player()
+    let motionManager = CMMotionManager()
 
     override func didMove(to view: SKView) {
         self.anchorPoint = .zero
@@ -30,7 +32,7 @@ class GameScene: SKScene {
         self.addChild(bee3)
         
         // Position the ground based on the screen size.
-        ground.position = CGPoint(x: -self.size.width * 2, y: 150)
+        ground.position = CGPoint(x: -self.size.width * 2, y: 30)
         ground.size = CGSize(width: self.size.width * 6, height: 0)
         ground.createChildren()
         self.addChild(ground)
@@ -38,13 +40,35 @@ class GameScene: SKScene {
         player.position = CGPoint(x: 150, y: 250)
         self.addChild(player)
         
-        bee2.physicsBody?.mass = 0.2
-        bee2.physicsBody?.applyImpulse(CGVector(dx: -25, dy: 0))
+        self.motionManager.startAccelerometerUpdates()
     }
     
     override func didSimulatePhysics() {
         self.camera!.position = player.position
     }
     
-    
+    override func update(_ currentTime: TimeInterval) {
+        player.update()
+        
+        if let accelData = self.motionManager.accelerometerData {
+            var forceAmount: CGFloat
+            var movement = CGVector()
+            switch UIApplication.shared.statusBarOrientation {
+            case .landscapeLeft:
+                forceAmount = 20000
+            case .landscapeRight:
+                forceAmount = -20000
+            default:
+                forceAmount = 0
+            }
+            
+            if accelData.acceleration.y > 0.15 {
+                movement.dx = forceAmount
+            } else if accelData.acceleration.y < -0.15 {
+                movement.dx = -forceAmount
+            }
+            
+            player.physicsBody?.applyForce(movement)
+        }
+    }
 }
