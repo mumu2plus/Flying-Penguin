@@ -19,6 +19,11 @@
 		1B2876F521CA80C0002992F7 /* Bee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2876F421CA80C0002992F7 /* Bee.swift */; };
 		1B2876F721CA88F2002992F7 /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2876F621CA88F2002992F7 /* Ground.swift */; };
 		1B2876F921CA9FFD002992F7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2876F821CA9FFD002992F7 /* Player.swift */; };
+		1B2876FB21CDEDAD002992F7 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2876FA21CDEDAD002992F7 /* Star.swift */; };
+		1B2876FD21CDF37B002992F7 /* MadFly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2876FC21CDF37B002992F7 /* MadFly.swift */; };
+		1B2876FF21CDFAAB002992F7 /* Bat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2876FE21CDFAAB002992F7 /* Bat.swift */; };
+		1B28770121CDFD3C002992F7 /* Blade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B28770021CDFD3C002992F7 /* Blade.swift */; };
+		1B28770321CE0613002992F7 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B28770221CE0613002992F7 /* Coin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		1B2876F421CA80C0002992F7 /* Bee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bee.swift; sourceTree = "<group>"; };
 		1B2876F621CA88F2002992F7 /* Ground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
 		1B2876F821CA9FFD002992F7 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		1B2876FA21CDEDAD002992F7 /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		1B2876FC21CDF37B002992F7 /* MadFly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MadFly.swift; sourceTree = "<group>"; };
+		1B2876FE21CDFAAB002992F7 /* Bat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bat.swift; sourceTree = "<group>"; };
+		1B28770021CDFD3C002992F7 /* Blade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blade.swift; sourceTree = "<group>"; };
+		1B28770221CE0613002992F7 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,19 +78,24 @@
 		1B2876D721C9487D002992F7 /* Flying Penguin */ = {
 			isa = PBXGroup;
 			children = (
-				1B2876D821C9487D002992F7 /* AppDelegate.swift */,
-				1B2876DA21C9487D002992F7 /* GameScene.sks */,
+				1B2876EA21C9487F002992F7 /* Info.plist */,
 				1B2876DC21C9487D002992F7 /* Actions.sks */,
+				1B2876DA21C9487D002992F7 /* GameScene.sks */,
+				1B2876D821C9487D002992F7 /* AppDelegate.swift */,
+				1B2876FE21CDFAAB002992F7 /* Bat.swift */,
+				1B2876F421CA80C0002992F7 /* Bee.swift */,
+				1B28770021CDFD3C002992F7 /* Blade.swift */,
+				1B28770221CE0613002992F7 /* Coin.swift */,
 				1B2876DE21C9487D002992F7 /* GameScene.swift */,
 				1B2876F221CA8013002992F7 /* GameSprite.swift */,
-				1B2876F421CA80C0002992F7 /* Bee.swift */,
 				1B2876E021C9487D002992F7 /* GameViewController.swift */,
-				1B2876E221C9487D002992F7 /* Main.storyboard */,
-				1B2876E521C9487F002992F7 /* Assets.xcassets */,
-				1B2876F821CA9FFD002992F7 /* Player.swift */,
 				1B2876F621CA88F2002992F7 /* Ground.swift */,
+				1B2876FC21CDF37B002992F7 /* MadFly.swift */,
+				1B2876F821CA9FFD002992F7 /* Player.swift */,
+				1B2876FA21CDEDAD002992F7 /* Star.swift */,
+				1B2876E521C9487F002992F7 /* Assets.xcassets */,
 				1B2876E721C9487F002992F7 /* LaunchScreen.storyboard */,
-				1B2876EA21C9487F002992F7 /* Info.plist */,
+				1B2876E221C9487D002992F7 /* Main.storyboard */,
 			);
 			path = "Flying Penguin";
 			sourceTree = "<group>";
@@ -163,8 +178,13 @@
 				1B2876F321CA8013002992F7 /* GameSprite.swift in Sources */,
 				1B2876DF21C9487D002992F7 /* GameScene.swift in Sources */,
 				1B2876F921CA9FFD002992F7 /* Player.swift in Sources */,
+				1B2876FF21CDFAAB002992F7 /* Bat.swift in Sources */,
+				1B28770321CE0613002992F7 /* Coin.swift in Sources */,
 				1B2876E121C9487D002992F7 /* GameViewController.swift in Sources */,
 				1B2876D921C9487D002992F7 /* AppDelegate.swift in Sources */,
+				1B28770121CDFD3C002992F7 /* Blade.swift in Sources */,
+				1B2876FD21CDF37B002992F7 /* MadFly.swift in Sources */,
+				1B2876FB21CDEDAD002992F7 /* Star.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

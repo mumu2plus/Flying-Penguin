@@ -15,11 +15,15 @@ class Player: SKSpriteNode, GameSprite {
     var flyAnimation = SKAction()
     var soarAnimation = SKAction()
     
+    var flapping = false
+    let maxFlappingForce: CGFloat = 57000
+    let maxHeight: CGFloat = 1000
+    
     init() {
         super.init(texture: nil, color: .clear, size: initialSize)
         
         createAnimations()
-        self.run(flyAnimation, withKey: "flapAnimation")
+        self.run(soarAnimation, withKey: "soarAnimation")
         
         let bodyTexture = textureAtlas.textureNamed("pierre-flying-3")
         self.physicsBody = SKPhysicsBody(texture: bodyTexture, size: self.size)
@@ -28,7 +32,24 @@ class Player: SKSpriteNode, GameSprite {
         self.physicsBody?.allowsRotation = false
     }
     
-    func update() {}
+    func update() {
+        if self.flapping {
+            var forceToApply = maxFlappingForce
+            if position.y > 600 {
+                let percentageOfMaxHeight = position.y / maxHeight
+                let flappingForceSubtraction = percentageOfMaxHeight * maxFlappingForce
+                forceToApply -= flappingForceSubtraction
+            }
+            self.physicsBody?.applyForce(CGVector(dx: 0, dy: forceToApply))
+        }
+        
+        if self.physicsBody!.velocity.dy > 300 {
+            self.physicsBody!.velocity.dy = 300
+        }
+        
+        // Set a constant velocity to the right:
+        //self.physicsBody?.velocity.dx = 200
+    }
     
     func createAnimations() {
         let rotateUpAction =
@@ -67,8 +88,20 @@ class Player: SKSpriteNode, GameSprite {
     }
     
     func onTap() {
-        
+        print(" tapping on penguin")
     }
     
+    // Begin the flap animation, set flapping to true:
+    func startFlapping() {
+        self.removeAction(forKey: "soarAnimation")
+        self.run(flyAnimation, withKey: "flapAnimation")
+        self.flapping = true
+    }
     
+    // Stop the flap animation, set flapping to false:
+    func stopFlapping() {
+        self.removeAction(forKey: "flapAnimation")
+        self.run(soarAnimation, withKey: "soarAnimation")
+        self.flapping = false
+    }
 }
