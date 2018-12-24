@@ -14,56 +14,21 @@ class GameScene: SKScene {
     var screenCenterY: CGFloat = 0
     let ground = Ground()
     let player = Player()
+    let powerUpStar = Star()
     
     let initialPlayerPosition = CGPoint(x: 150, y: 250)
     var playerProgress = CGFloat()
     
+    let encounterManager = EncounterManager()
+    
+    var nextEncounterSpawnPosition = CGFloat(150)
+    
+    
 
     override func didMove(to view: SKView) {
-        screenCenterY = self.size.height / 2
-        
         self.anchorPoint = .zero
         self.backgroundColor = UIColor(red: 0.4, green: 0.6, blue:0.95, alpha: 1.0)
         self.camera = cam
-        
-        let bee2 = Bee()
-        bee2.position = CGPoint(x: 325, y: 325)
-        self.addChild(bee2)
-        
-        let bee3 = Bee()
-        bee3.position = CGPoint(x: 200, y: 325)
-        self.addChild(bee3)
-        
-        // Spawn a bat:
-        let bat = Bat()
-        bat.position = CGPoint(x: 400, y: 200)
-        self.addChild(bat)
-        
-        // A blade:
-        let blade = Blade()
-        blade.position = CGPoint(x: 300, y: 76)
-        self.addChild(blade)
-        
-        // A mad fly:
-        let madFly = MadFly()
-        madFly.position = CGPoint(x: 50, y: 50)
-        self.addChild(madFly)
-        
-        // A bronze coin:
-        let bronzeCoin = Coin()
-        bronzeCoin.position = CGPoint(x: -50, y: 250)
-        self.addChild(bronzeCoin)
-        
-        // A gold coin:
-        let goldCoin = Coin()
-        goldCoin.position = CGPoint(x: 25, y: 250)
-        goldCoin.turnToGold()
-        self.addChild(goldCoin)
-        
-        // The powerup star:
-        let star = Star()
-        star.position = CGPoint(x: 250, y: 250)
-        self.addChild(star)
         
         // Position the ground based on the screen size.
         ground.position = CGPoint(x: -self.size.width * 2, y: 30)
@@ -74,7 +39,18 @@ class GameScene: SKScene {
         player.position = initialPlayerPosition
         self.addChild(player)
         
+        // Set gravity
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -5)
+        
+        // Store the vertical center of the screen:
+        screenCenterY = self.size.height / 2
+        
+        encounterManager.addEncountersToScene(gameScene: self)
+        
+        // Place the star out of the way for now:
+        self.addChild(powerUpStar)
+        powerUpStar.position = CGPoint(x: -2000, y: -2000)
+        
     }
     
     override func didSimulatePhysics() {
@@ -100,6 +76,26 @@ class GameScene: SKScene {
         playerProgress = player.position.x - initialPlayerPosition.x
         
         ground.checkForReposition(playerProgress: playerProgress)
+        
+        // Check to see if we should set a new encounter:
+        if player.position.x > nextEncounterSpawnPosition {
+            encounterManager.placeNextEncounter(currentXPos: nextEncounterSpawnPosition)
+            nextEncounterSpawnPosition += 1200
+            
+            // Each encounter has a 10% chance to spawn a star:
+            let starRoll = Int(arc4random_uniform(10))
+            if starRoll > 4 {
+                // Only move the star if it is off the screen.
+                if abs(player.position.x - powerUpStar.position.x) > 1200 {
+                    // Y Position 50-450:
+                    let randomYPos = 50 + CGFloat(arc4random_uniform(400))
+                    powerUpStar.position = CGPoint(x: nextEncounterSpawnPosition, y: randomYPos)
+                    // Remove any previous velocity and spin:
+                    powerUpStar.physicsBody?.angularVelocity = 0
+                    powerUpStar.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                }
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
