@@ -20,6 +20,8 @@ class Star: SKSpriteNode, GameSprite {
         self.physicsBody?.affectedByGravity = false
         createAnimations()
         self.run(pulseAnimation)
+        
+        self.physicsBody?.categoryBitMask = PhysicsCategory.powerup.rawValue
     }
     
     required init?(coder aDecoder: NSCoder) {

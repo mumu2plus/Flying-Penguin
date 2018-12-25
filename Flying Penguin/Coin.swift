@@ -20,6 +20,9 @@ class Coin: SKSpriteNode, GameSprite {
         super.init(texture: bronzeTexture, color: .clear, size: initialSize)
         self.physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
         self.physicsBody?.affectedByGravity = false
+        
+        self.physicsBody?.categoryBitMask = PhysicsCategory.coin.rawValue
+        self.physicsBody?.collisionBitMask = 0
     }
     
     func turnToGold() {

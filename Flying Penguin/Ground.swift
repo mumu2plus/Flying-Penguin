@@ -34,6 +34,10 @@ class Ground: SKSpriteNode, GameSprite {
         self.physicsBody = SKPhysicsBody(edgeFrom: pointTopLeft, to: pointTopRight)
         
         jumpWidth = tileSize.width * floor(tileCount / 3)
+        
+        self.physicsBody?.categoryBitMask =
+            PhysicsCategory.ground.rawValue
+        
     }
     
     func checkForReposition(playerProgress: CGFloat) {

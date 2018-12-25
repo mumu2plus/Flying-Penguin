@@ -19,6 +19,20 @@ class Player: SKSpriteNode, GameSprite {
     let maxFlappingForce: CGFloat = 57000
     let maxHeight: CGFloat = 1000
     
+    // The player will be able to take 3 hits before game over:
+    var health: Int = 3
+    // Keep track of when the player is invulnerable:
+    var invulnerable = false
+    // Keep track of when the player is newly damaged:
+    var damaged = false
+    // We will create animations to run when the player takes
+    // damage or dies, Add these properties to store them:
+    var damageAnimation = SKAction()
+    var dieAnimation = SKAction()
+    // We want to stop forward velocity if the player dies,
+    // so we will now store forward velocity as a property:
+    var forwardVelocity: CGFloat = 200
+    
     init() {
         super.init(texture: nil, color: .clear, size: initialSize)
         
@@ -30,6 +44,14 @@ class Player: SKSpriteNode, GameSprite {
         self.physicsBody?.linearDamping = 0.9
         self.physicsBody?.mass = 30
         self.physicsBody?.allowsRotation = false
+        
+        self.physicsBody?.categoryBitMask = PhysicsCategory.penguin.rawValue
+        self.physicsBody?.contactTestBitMask =
+            PhysicsCategory.enemy.rawValue |
+            PhysicsCategory.ground.rawValue |
+            PhysicsCategory.powerup.rawValue |
+            PhysicsCategory.coin.rawValue
+        self.physicsBody?.collisionBitMask = PhysicsCategory.ground.rawValue
     }
     
     func update() {
@@ -48,7 +70,7 @@ class Player: SKSpriteNode, GameSprite {
         }
         
         // Set a constant velocity to the right:
-        self.physicsBody?.velocity.dx = 200
+        self.physicsBody?.velocity.dx = self.forwardVelocity
     }
     
     func createAnimations() {
@@ -93,6 +115,7 @@ class Player: SKSpriteNode, GameSprite {
     
     // Begin the flap animation, set flapping to true:
     func startFlapping() {
+        if self.health <= 0 {return}
         self.removeAction(forKey: "soarAnimation")
         self.run(flyAnimation, withKey: "flapAnimation")
         self.flapping = true
@@ -100,8 +123,36 @@ class Player: SKSpriteNode, GameSprite {
     
     // Stop the flap animation, set flapping to false:
     func stopFlapping() {
+        if self.health <= 0 {return}
         self.removeAction(forKey: "flapAnimation")
         self.run(soarAnimation, withKey: "soarAnimation")
         self.flapping = false
+    }
+    
+    func die() {
+        // Make sure the player is fully visible:
+        self.alpha = 1
+        // Remove all animations:
+        self.removeAllActions()
+        // Run the die animation:
+        self.run(self.dieAnimation)
+        // Prevent any further upward movement:
+        self.flapping = false
+        // Stop forward movement:
+        self.forwardVelocity = 0
+    }
+    
+    func takeDamage() {
+        // If invulnerable or damaged, return:
+        if self.invulnerable || self.damaged {return}
+        // Remove one from our health pool
+        self.health -= 1
+        if self.health == 0 {
+            // If we are out of health, run the die function:
+            die()
+        } else {
+            // Run the take damage animation:
+            self.run(self.damageAnimation)
+        }
     }
 }

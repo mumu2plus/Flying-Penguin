@@ -8,7 +8,16 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+enum PhysicsCategory: UInt32 {
+    case penguin = 1
+    case damagedPenguin = 2
+    case ground = 4
+    case enemy = 8
+    case coin = 16
+    case powerup = 32
+}
+
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let cam = SKCameraNode()
     var screenCenterY: CGFloat = 0
@@ -51,6 +60,7 @@ class GameScene: SKScene {
         self.addChild(powerUpStar)
         powerUpStar.position = CGPoint(x: -2000, y: -2000)
         
+        self.physicsWorld.contactDelegate = self
     }
     
     override func didSimulatePhysics() {
@@ -96,6 +106,34 @@ class GameScene: SKScene {
                 }
             }
         }
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let otherBody: SKPhysicsBody
+        let penguinMask = PhysicsCategory.penguin.rawValue | PhysicsCategory.damagedPenguin.rawValue
+        if (contact.bodyA.categoryBitMask & penguinMask) > 0 {
+            // bodyA is the penguin, we will test bodyB's type:
+            otherBody = contact.bodyB
+        } else {
+            // bodyB is the penguin, we will test bodyA's type:
+            otherBody = contact.bodyA
+        }
+        // Find the type of contact:
+        switch otherBody.categoryBitMask {
+        case PhysicsCategory.ground.rawValue:
+            print("hit the ground")
+            player.takeDamage()
+        case PhysicsCategory.enemy.rawValue:
+            print("take damage")
+            player.takeDamage()
+        case PhysicsCategory.coin.rawValue:
+            print("collect a coin")
+        case PhysicsCategory.powerup.rawValue:
+            print("start the power-up")
+        default:
+            print("contact with no game logic")
+        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
