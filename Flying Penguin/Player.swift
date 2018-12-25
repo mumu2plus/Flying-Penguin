@@ -103,6 +103,66 @@ class Player: SKSpriteNode, GameSprite {
             SKAction.repeatForever(soarAction),
             rotateDownAction
             ])
+        
+        // --- Create the taking damage animation ---
+        let damageStart = SKAction.run {
+            // Allow the penguin to pass through enemies:
+            self.physicsBody?.categoryBitMask = PhysicsCategory.damagedPenguin.rawValue
+        }
+        
+        // Create an opacity pulse, slow at first and fast at the end:
+        let slowFade = SKAction.sequence([
+            SKAction.fadeAlpha(to: 0.3, duration: 0.35),
+            SKAction.fadeAlpha(to: 0.7, duration: 0.35)
+            ])
+        let fastFade = SKAction.sequence([
+            SKAction.fadeAlpha(to: 0.3, duration: 0.2),
+            SKAction.fadeAlpha(to: 0.7, duration: 0.35)
+            ])
+        let fadeOutAndIn = SKAction.sequence([
+            SKAction.repeat(slowFade, count: 2),
+            SKAction.repeat(fastFade, count: 5),
+            SKAction.fadeAlpha(to: 1, duration: 0.15)
+            ])
+        // Return the penguin to normal:
+        let damageEnd = SKAction.run {
+            self.physicsBody?.categoryBitMask = PhysicsCategory.penguin.rawValue
+            // Turn off the newly damaged flag:
+            self.damaged = false
+        }
+        // Store the whole sequence in the damageAnimation property:
+        self.damageAnimation = SKAction.sequence([
+            damageStart,
+            fadeOutAndIn,
+            damageEnd
+            ])
+        
+        // --- Create the death animation ---
+        let startDie = SKAction.run {
+            // Switch to the death texture with X eyes:
+            self.texture = self.textureAtlas.textureNamed("pierre-dead")
+            // Suspend the penguin in space:
+            self.physicsBody?.affectedByGravity = false
+            // Stop any movement:
+            self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        }
+        
+        let endDie = SKAction.run {
+            // Turn gravity back on:
+            self.physicsBody?.affectedByGravity = true
+        }
+        
+        self.dieAnimation = SKAction.sequence([
+            startDie,
+            // Scale the penguin bigger:
+            SKAction.scale(to: 1.3, duration: 0.5),
+            // Use the waitForDuration action to provide a short pause:
+            SKAction.wait(forDuration: 0.5),
+            // Rotate the penguin on to his back:
+            SKAction.rotate(toAngle: 3, duration: 1.5),
+            SKAction.wait(forDuration: 0.5),
+            endDie
+            ])
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -145,6 +205,8 @@ class Player: SKSpriteNode, GameSprite {
     func takeDamage() {
         // If invulnerable or damaged, return:
         if self.invulnerable || self.damaged {return}
+        // Set the damaged state to true after being hit:
+        self.damaged = true
         // Remove one from our health pool
         self.health -= 1
         if self.health == 0 {
@@ -155,4 +217,5 @@ class Player: SKSpriteNode, GameSprite {
             self.run(self.damageAnimation)
         }
     }
+    
 }
