@@ -218,4 +218,28 @@ class Player: SKSpriteNode, GameSprite {
         }
     }
     
+    func starPower() {
+        // Remove any existing star power-up animation, if
+        // the player is already under the power of star
+        self.removeAction(forKey: "starPower")
+        // Grant great forward speed:
+        self.forwardVelocity = 400
+        // Make hte player invulnerable:
+        self.invulnerable = true
+        // Create a sequence to scale the player larger,
+        // wait 8 seconds, then scale back down and turn off
+        // invulnerability, returning the player to normal:
+        let starSequence = SKAction.sequence([
+            SKAction.scale(to: 1.5, duration: 0.3),
+            SKAction.wait(forDuration: 8),
+            SKAction.scale(to: 1, duration: 1),
+            SKAction.run {
+                self.forwardVelocity = 200
+                self.invulnerable = false
+            }
+            ])
+        // Execute the sequence:
+        self.run(starSequence, withKey: "starPower")
+    }
+    
 }
