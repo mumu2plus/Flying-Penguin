@@ -28,6 +28,7 @@
 		1BDFF0E321CF81F100C30F24 /* EncounterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFF0E221CF81F100C30F24 /* EncounterManager.swift */; };
 		1BDFF0E521D07BEC00C30F24 /* EncounterB.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1BDFF0E421D07BEC00C30F24 /* EncounterB.sks */; };
 		1BDFF0E721D07CCD00C30F24 /* EncounterC.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1BDFF0E621D07CCD00C30F24 /* EncounterC.sks */; };
+		1BDFF0E921D2603100C30F24 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFF0E821D2603100C30F24 /* HUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		1BDFF0E221CF81F100C30F24 /* EncounterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterManager.swift; sourceTree = "<group>"; };
 		1BDFF0E421D07BEC00C30F24 /* EncounterB.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterB.sks; sourceTree = "<group>"; };
 		1BDFF0E621D07CCD00C30F24 /* EncounterC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterC.sks; sourceTree = "<group>"; };
+		1BDFF0E821D2603100C30F24 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				1B2876F821CA9FFD002992F7 /* Player.swift */,
 				1B2876FA21CDEDAD002992F7 /* Star.swift */,
 				1B2876E521C9487F002992F7 /* Assets.xcassets */,
+				1BDFF0E821D2603100C30F24 /* HUD.swift */,
 				1B2876E721C9487F002992F7 /* LaunchScreen.storyboard */,
 				1B2876E221C9487D002992F7 /* Main.storyboard */,
 			);
@@ -207,6 +210,7 @@
 				1B2876D921C9487D002992F7 /* AppDelegate.swift in Sources */,
 				1B28770121CDFD3C002992F7 /* Blade.swift in Sources */,
 				1B2876FD21CDF37B002992F7 /* MadFly.swift in Sources */,
+				1BDFF0E921D2603100C30F24 /* HUD.swift in Sources */,
 				1BDFF0E321CF81F100C30F24 /* EncounterManager.swift in Sources */,
 				1B2876FB21CDEDAD002992F7 /* Star.swift in Sources */,
 			);
