@@ -183,7 +183,7 @@ class Player: SKSpriteNode, GameSprite {
     }
     
     func onTap() {
-        print(" tapping on penguin")
+        //print(" tapping on penguin")
     }
     
     // Begin the flap animation, set flapping to true:
@@ -213,6 +213,11 @@ class Player: SKSpriteNode, GameSprite {
         self.flapping = false
         // Stop forward movement:
         self.forwardVelocity = 0
+        
+        // Alert the GameScene
+        if let gameScene = self.parent as? GameScene {
+            gameScene.gameOver()
+        }
     }
     
     func takeDamage() {
