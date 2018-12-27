@@ -29,6 +29,8 @@
 		1BDFF0E521D07BEC00C30F24 /* EncounterB.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1BDFF0E421D07BEC00C30F24 /* EncounterB.sks */; };
 		1BDFF0E721D07CCD00C30F24 /* EncounterC.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1BDFF0E621D07CCD00C30F24 /* EncounterC.sks */; };
 		1BDFF0E921D2603100C30F24 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFF0E821D2603100C30F24 /* HUD.swift */; };
+		1BDFF0EB21D272A700C30F24 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFF0EA21D272A700C30F24 /* Background.swift */; };
+		1BDFF0ED21D46E2D00C30F24 /* PierrePath.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1BDFF0EC21D46E2D00C30F24 /* PierrePath.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		1BDFF0E421D07BEC00C30F24 /* EncounterB.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterB.sks; sourceTree = "<group>"; };
 		1BDFF0E621D07CCD00C30F24 /* EncounterC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterC.sks; sourceTree = "<group>"; };
 		1BDFF0E821D2603100C30F24 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		1BDFF0EA21D272A700C30F24 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		1BDFF0EC21D46E2D00C30F24 /* PierrePath.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PierrePath.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				1B2876F821CA9FFD002992F7 /* Player.swift */,
 				1B2876FA21CDEDAD002992F7 /* Star.swift */,
 				1B2876E521C9487F002992F7 /* Assets.xcassets */,
+				1BDFF0EC21D46E2D00C30F24 /* PierrePath.sks */,
+				1BDFF0EA21D272A700C30F24 /* Background.swift */,
 				1BDFF0E821D2603100C30F24 /* HUD.swift */,
 				1B2876E721C9487F002992F7 /* LaunchScreen.storyboard */,
 				1B2876E221C9487D002992F7 /* Main.storyboard */,
@@ -187,6 +193,7 @@
 				1BDFF0E721D07CCD00C30F24 /* EncounterC.sks in Resources */,
 				1B2876E621C9487F002992F7 /* Assets.xcassets in Resources */,
 				1B28770721CEA2B2002992F7 /* EncounterA.sks in Resources */,
+				1BDFF0ED21D46E2D00C30F24 /* PierrePath.sks in Resources */,
 				1B2876E921C9487F002992F7 /* LaunchScreen.storyboard in Resources */,
 				1B2876DD21C9487D002992F7 /* Actions.sks in Resources */,
 			);
@@ -213,6 +220,7 @@
 				1BDFF0E921D2603100C30F24 /* HUD.swift in Sources */,
 				1BDFF0E321CF81F100C30F24 /* EncounterManager.swift in Sources */,
 				1B2876FB21CDEDAD002992F7 /* Star.swift in Sources */,
+				1BDFF0EB21D272A700C30F24 /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
