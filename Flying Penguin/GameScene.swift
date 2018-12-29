@@ -33,6 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let hud = HUD()
     var backgrounds: [Background] = []
     let particlePool = ParticlePool()
+    let heartCrate = Crate()
     
 
     override func didMove(to view: SKView) {
@@ -103,6 +104,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Add emitter nodes to GameScene node tree:
         particlePool.addEmittersToScene(scene: self)
+        
+        // Spawn the heart crate, out of the way for now
+        self.addChild(heartCrate)
+        heartCrate.position = CGPoint(x: -2100, y: -2100)
+        heartCrate.turnToHeartCrate()
     }
     
     override func didSimulatePhysics() {
@@ -137,7 +143,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Each encounter has a 10% chance to spawn a star:
             let starRoll = Int(arc4random_uniform(10))
             //let starRoll = 0
-            if starRoll > 3 {
+            if starRoll < 5 {
                 // Only move the star if it is off the screen.
                 if abs(player.position.x - powerUpStar.position.x) > 1200 {
                     // Y Position 50-450:
@@ -147,6 +153,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     powerUpStar.physicsBody?.angularVelocity = 0
                     powerUpStar.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
                 }
+            }
+            if starRoll >= 5 {
+                heartCrate.reset()
+                heartCrate.position = CGPoint(x: nextEncounterSpawnPosition - 600, y: 270)
             }
         }
         
@@ -188,6 +198,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         case PhysicsCategory.powerup.rawValue:
             player.starPower()
+        case PhysicsCategory.crate.rawValue:
+            if let crate = otherBody.node as? Crate {
+                crate.explode(gameScene: self)
+            }
         default:
             print("contact with no game logic")
         }

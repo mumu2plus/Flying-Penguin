@@ -21,6 +21,7 @@ class Player: SKSpriteNode, GameSprite {
     
     // The player will be able to take 3 hits before game over:
     var health: Int = 3
+    let maxHealth = 3
     // Keep track of when the player is invulnerable:
     var invulnerable = false
     // Keep track of when the player is newly damaged:
