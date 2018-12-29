@@ -33,6 +33,12 @@ class Player: SKSpriteNode, GameSprite {
     // so we will now store forward velocity as a property:
     var forwardVelocity: CGFloat = 200
     
+    let powerupSound =
+        SKAction.playSoundFileNamed("Sound/Powerup.aif", waitForCompletion: false)
+    
+    let hurtSound =
+        SKAction.playSoundFileNamed("Sound/Hurt.aif", waitForCompletion: false)
+    
     init() {
         super.init(texture: nil, color: .clear, size: initialSize)
         
@@ -50,7 +56,8 @@ class Player: SKSpriteNode, GameSprite {
             PhysicsCategory.enemy.rawValue |
             PhysicsCategory.ground.rawValue |
             PhysicsCategory.powerup.rawValue |
-            PhysicsCategory.coin.rawValue
+            PhysicsCategory.coin.rawValue |
+            PhysicsCategory.crate.rawValue
         self.physicsBody?.collisionBitMask = PhysicsCategory.ground.rawValue
         
         // Grant a momentary reprieve from gravity:
@@ -234,6 +241,9 @@ class Player: SKSpriteNode, GameSprite {
             // Run the take damage animation:
             self.run(self.damageAnimation)
         }
+        
+        // Play the hurt sound:
+        self.run(hurtSound)
     }
     
     func starPower() {
@@ -258,6 +268,9 @@ class Player: SKSpriteNode, GameSprite {
             ])
         // Execute the sequence:
         self.run(starSequence, withKey: "starPower")
+        
+        // Play the powerup sound:
+        self.run(powerupSound)
     }
     
 }

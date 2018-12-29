@@ -33,6 +33,12 @@
 		1BDFF0ED21D46E2D00C30F24 /* PierrePath.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1BDFF0EC21D46E2D00C30F24 /* PierrePath.sks */; };
 		1BDFF0EF21D4EA4A00C30F24 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFF0EE21D4EA4A00C30F24 /* MenuScene.swift */; };
 		1BDFF0F121D50C8D00C30F24 /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = 1BDFF0F021D50C8D00C30F24 /* Sound */; };
+		1BDFF0F321D7155500C30F24 /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFF0F221D7155500C30F24 /* BackgroundMusic.swift */; };
+		1BDFF0F521D71B2600C30F24 /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFF0F421D71B2600C30F24 /* OptionsScene.swift */; };
+		1BDFF0F721D76DE500C30F24 /* Crate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFF0F621D76DE500C30F24 /* Crate.swift */; };
+		1BDFF0F921D78C3700C30F24 /* HeartExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1BDFF0F821D78C3700C30F24 /* HeartExplosion.sks */; };
+		1BDFF0FB21D7A2DF00C30F24 /* CrateExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1BDFF0FA21D7A2DF00C30F24 /* CrateExplosion.sks */; };
+		1BDFF0FD21D7A67700C30F24 /* ParticalPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDFF0FC21D7A67700C30F24 /* ParticalPool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +70,12 @@
 		1BDFF0EC21D46E2D00C30F24 /* PierrePath.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PierrePath.sks; sourceTree = "<group>"; };
 		1BDFF0EE21D4EA4A00C30F24 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		1BDFF0F021D50C8D00C30F24 /* Sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sound; sourceTree = "<group>"; };
+		1BDFF0F221D7155500C30F24 /* BackgroundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
+		1BDFF0F421D71B2600C30F24 /* OptionsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
+		1BDFF0F621D76DE500C30F24 /* Crate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crate.swift; sourceTree = "<group>"; };
+		1BDFF0F821D78C3700C30F24 /* HeartExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HeartExplosion.sks; sourceTree = "<group>"; };
+		1BDFF0FA21D7A2DF00C30F24 /* CrateExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CrateExplosion.sks; sourceTree = "<group>"; };
+		1BDFF0FC21D7A67700C30F24 /* ParticalPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticalPool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,28 +109,34 @@
 		1B2876D721C9487D002992F7 /* Flying Penguin */ = {
 			isa = PBXGroup;
 			children = (
-				1BDFF0E221CF81F100C30F24 /* EncounterManager.swift */,
-				1B28770421CEA055002992F7 /* Encounters */,
 				1B2876EA21C9487F002992F7 /* Info.plist */,
 				1B2876DC21C9487D002992F7 /* Actions.sks */,
 				1B2876DA21C9487D002992F7 /* GameScene.sks */,
+				1BDFF0EC21D46E2D00C30F24 /* PierrePath.sks */,
 				1B2876D821C9487D002992F7 /* AppDelegate.swift */,
+				1BDFF0EA21D272A700C30F24 /* Background.swift */,
+				1BDFF0F221D7155500C30F24 /* BackgroundMusic.swift */,
 				1B2876FE21CDFAAB002992F7 /* Bat.swift */,
 				1B2876F421CA80C0002992F7 /* Bee.swift */,
 				1B28770021CDFD3C002992F7 /* Blade.swift */,
 				1B28770221CE0613002992F7 /* Coin.swift */,
+				1BDFF0E221CF81F100C30F24 /* EncounterManager.swift */,
 				1B2876DE21C9487D002992F7 /* GameScene.swift */,
 				1B2876F221CA8013002992F7 /* GameSprite.swift */,
 				1B2876E021C9487D002992F7 /* GameViewController.swift */,
 				1B2876F621CA88F2002992F7 /* Ground.swift */,
+				1BDFF0E821D2603100C30F24 /* HUD.swift */,
 				1B2876FC21CDF37B002992F7 /* MadFly.swift */,
+				1BDFF0EE21D4EA4A00C30F24 /* MenuScene.swift */,
+				1BDFF0F421D71B2600C30F24 /* OptionsScene.swift */,
 				1B2876F821CA9FFD002992F7 /* Player.swift */,
+				1BDFF0F621D76DE500C30F24 /* Crate.swift */,
+				1BDFF0F821D78C3700C30F24 /* HeartExplosion.sks */,
+				1BDFF0FA21D7A2DF00C30F24 /* CrateExplosion.sks */,
+				1BDFF0FC21D7A67700C30F24 /* ParticalPool.swift */,
 				1B2876FA21CDEDAD002992F7 /* Star.swift */,
 				1B2876E521C9487F002992F7 /* Assets.xcassets */,
-				1BDFF0EE21D4EA4A00C30F24 /* MenuScene.swift */,
-				1BDFF0EC21D46E2D00C30F24 /* PierrePath.sks */,
-				1BDFF0EA21D272A700C30F24 /* Background.swift */,
-				1BDFF0E821D2603100C30F24 /* HUD.swift */,
+				1B28770421CEA055002992F7 /* Encounters */,
 				1B2876E721C9487F002992F7 /* LaunchScreen.storyboard */,
 				1B2876E221C9487D002992F7 /* Main.storyboard */,
 			);
@@ -194,8 +212,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BDFF0E521D07BEC00C30F24 /* EncounterB.sks in Resources */,
+				1BDFF0FB21D7A2DF00C30F24 /* CrateExplosion.sks in Resources */,
 				1B2876E421C9487D002992F7 /* Main.storyboard in Resources */,
 				1BDFF0F121D50C8D00C30F24 /* Sound in Resources */,
+				1BDFF0F921D78C3700C30F24 /* HeartExplosion.sks in Resources */,
 				1B2876DB21C9487D002992F7 /* GameScene.sks in Resources */,
 				1BDFF0E721D07CCD00C30F24 /* EncounterC.sks in Resources */,
 				1B2876E621C9487F002992F7 /* Assets.xcassets in Resources */,
@@ -218,7 +238,9 @@
 				1B2876F321CA8013002992F7 /* GameSprite.swift in Sources */,
 				1B2876DF21C9487D002992F7 /* GameScene.swift in Sources */,
 				1B2876F921CA9FFD002992F7 /* Player.swift in Sources */,
+				1BDFF0F521D71B2600C30F24 /* OptionsScene.swift in Sources */,
 				1B2876FF21CDFAAB002992F7 /* Bat.swift in Sources */,
+				1BDFF0F321D7155500C30F24 /* BackgroundMusic.swift in Sources */,
 				1B28770321CE0613002992F7 /* Coin.swift in Sources */,
 				1B2876E121C9487D002992F7 /* GameViewController.swift in Sources */,
 				1B2876D921C9487D002992F7 /* AppDelegate.swift in Sources */,
@@ -228,7 +250,9 @@
 				1BDFF0E321CF81F100C30F24 /* EncounterManager.swift in Sources */,
 				1BDFF0EF21D4EA4A00C30F24 /* MenuScene.swift in Sources */,
 				1B2876FB21CDEDAD002992F7 /* Star.swift in Sources */,
+				1BDFF0F721D76DE500C30F24 /* Crate.swift in Sources */,
 				1BDFF0EB21D272A700C30F24 /* Background.swift in Sources */,
+				1BDFF0FD21D7A67700C30F24 /* ParticalPool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

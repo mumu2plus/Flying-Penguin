@@ -13,8 +13,6 @@ import AVFoundation
 
 class GameViewController: UIViewController {
     
-    var musicPlayer = AVAudioPlayer()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,23 +32,11 @@ class GameViewController: UIViewController {
         menuScene.size = view.bounds.size
         // Show the menu:
         skView.presentScene(menuScene)
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+//        skView.showsFPS = true
+//        skView.showsNodeCount = true
         
         // Start the background music:
-        if let musicPath = Bundle.main.path(
-            forResource: "Sound/BackgroundMusic.m4a", ofType: nil) {
-            let url = URL(fileURLWithPath: musicPath)
-            
-            do {
-                musicPlayer = try AVAudioPlayer(contentsOf: url)
-                musicPlayer.numberOfLoops = -1
-                musicPlayer.prepareToPlay()
-                musicPlayer.play()
-            } catch {
-                /* Couldn't load music file */
-            }
-        }
+        BackgroundMusic.instance.playBackgroundMusic()
     }
 
     override var shouldAutorotate: Bool {

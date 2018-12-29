@@ -15,6 +15,7 @@ enum PhysicsCategory: UInt32 {
     case enemy = 8
     case coin = 16
     case powerup = 32
+    case crate = 64
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -31,6 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var coinsCollected = 0
     let hud = HUD()
     var backgrounds: [Background] = []
+    let particlePool = ParticlePool()
     
 
     override func didMove(to view: SKView) {
@@ -95,6 +97,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.addChild(dotEmitter)
             dotEmitter.targetNode = self
         }
+        
+        // Play the start sound:
+        self.run(SKAction.playSoundFileNamed("Sound/StartGame.aif", waitForCompletion: false))
+        
+        // Add emitter nodes to GameScene node tree:
+        particlePool.addEmittersToScene(scene: self)
     }
     
     override func didSimulatePhysics() {

@@ -15,6 +15,9 @@ class Coin: SKSpriteNode, GameSprite {
     
     var value = 1
     
+    let coinSound =
+        SKAction.playSoundFileNamed("Sound/Coin.aif", waitForCompletion: false)
+    
     init() {
         let bronzeTexture = textureAtlas.textureNamed("coin-bronze")
         super.init(texture: bronzeTexture, color: .clear, size: initialSize)
@@ -61,6 +64,9 @@ class Coin: SKSpriteNode, GameSprite {
             ])
         // Run the collect animation:
         self.run(collectSequence)
+        
+        // Play the coin sound:
+        self.run(coinSound)
     }
     
     
